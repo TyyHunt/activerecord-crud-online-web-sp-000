@@ -72,6 +72,7 @@ def can_be_found_updated_and_saved
   Movie.create(title: "Awesome Flick")
   new_movie = Movie.last
   new_movie.update(:title => "Even Awesomer Flick")
+  new_movie.save
   new_movie
 end
 
