@@ -46,7 +46,7 @@ def can_get_size_of_the_database
 end
 
 def can_find_the_first_item_from_the_database_using_id
-  Movie.find(id)
+  Movie.find(num) LIMIT 1
 end
 
 def can_find_by_multiple_attributes
@@ -66,16 +66,16 @@ end
 def can_be_found_updated_and_saved
   # Updtate the title "Awesome Flick" to "Even Awesomer Flick", save it, then return it
   Movie.create(title: "Awesome Flick")
-  __
-  __
-  __
+  new_movie = Movie.last
+  new_movie.update = (:title => "Even Awesomer Flick")
+  new_movie
 end
 
 def can_update_using_update_method
   # Update movie title to "Wat, huh?"
   Movie.create(title: "Wat?")
-  __
-  __
+  Movie.update
+  Movie.save
 end
 
 def can_update_multiple_items_at_once
@@ -83,7 +83,7 @@ def can_update_multiple_items_at_once
   5.times do |i|
     Movie.create(title: "Movie_#{i}", release_date: 2000+i)
   end
-  __
+  Movie.update
 end
 
 def can_destroy_a_single_item
